@@ -2,11 +2,11 @@
 # the content of 'build_base_dir'
 build_base_url: 'http://192.168.23.100'
 # htdocs dir path on builder
-build_base_dir: '/data'
+build_base_dir: '/root/data'
 #build_uuid_generator: 'uuidgen'
 # this key will be temporarily pushed into created VMs,
 # so ansible can log in an configure them
-build_ssh_key: 'ssh-rsa blabla user@host'
+build_ssh_key: 'ssh-rsa root user@host'
 # root pwd that will be set in VMs
 build_image_password: 'nbusr123'
 build_disk_compression: lz4
@@ -31,4 +31,4 @@ build_ip: 10.12.15.199
 build_vnc_ports:
 # Or specify only one, which will be used by all VMs (=> no parallel builds)
 # When using this, "build_vnc_ports" must be defined as empty list.
-65081build_vnc_port: 40000
+65081build_vnc_port: 65081
