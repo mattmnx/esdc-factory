@@ -16,5 +16,5 @@ zone_disks:
     image_size: "{{ base_centos_imgmanifest.image_size }}"
     image_uuid: "{{ base_centos_imgmanifest.uuid }}"
     refreservation: "{{ base_centos_imgmanifest.image_size }}"
-zone_nic_0_ip: "{{ build_ips.ubuntu-16.04 | default(build_ip) }}"
+zone_nic_0_ip: "10.12.15.199"
 base_image_url: ubuntu-16.04.3-server-amd64.img
