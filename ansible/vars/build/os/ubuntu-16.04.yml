@@ -1,0 +1,8 @@
+root_pw: ""  # auto-generate password
+grub_pw: null
+
+rc_scripts_after:
+  - cloud-final.service
+
+firewall_allowed_tcp_ports:
+  - port: 22

@@ -1,0 +1,19 @@
+- name: Check builder host
+  hosts: builder
+  tasks:
+    - include: tasks/build/check.yml
+      when: skip_check is not defined or not skip_check
+
+
+
+#Split this up into pre tasks, tasks, final tasks
+- name: Create virtual machine and image
+  hosts: buildnode
+  vars_files:
+    - vars/build/vm/ubuntu-16.04.yml
+  pre_tasks:
+    - include: tasks/build/cleanup.yml
+  roles:
+    - smartos-vm
+  tasks:
+    - include: tasks/build/ubuntu-16.04/create-image.yml
