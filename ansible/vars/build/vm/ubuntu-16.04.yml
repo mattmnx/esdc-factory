@@ -7,7 +7,7 @@ image_requirements:
 remove_base_image: true
 builder_dir: "{{ builder.appliance.dir }}/ubuntu-16.04"
 zone_brand: kvm
-zone_vnc_port: "{{ build_vnc_ports.ubuntu-16.04 | default(build_vnc_port) | mandatory }}"
+zone_vnc_port: "65081"
 zone_uuid: 632a5889-eb72-4b8e-8241-1e61946aaaaa
 zone_hostname: "{{ image_name }}"
 zone_disks:
