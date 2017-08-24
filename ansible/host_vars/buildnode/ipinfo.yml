@@ -31,4 +31,4 @@ build_ip: 10.12.15.199
 build_vnc_ports:
 # Or specify only one, which will be used by all VMs (=> no parallel builds)
 # When using this, "build_vnc_ports" must be defined as empty list.
-65081build_vnc_port: 65081
+build_vnc_port: 65081
