@@ -10,5 +10,19 @@
   with_items:
     - /tmp/base.json
 
-- name: Ensure that virtual machine is running
-  vmadm: alias=template state=started
+- name:
+  set_fact:
+    template_uuid: "vmadm list alias=elk.mnx.io |grep '[a-d0-9]-'|cut -d" " -f1"
+
+- debug:
+    msg: "{{template_uuid }}"
+
+- name: Copy the iso to the correct locaion
+  get_url:
+    url: http://10.12.15.36/iso/ubuntu.iso
+    dest: /zones/{{ template_uuid }}/root/
+    mode: 0440
+  
+
+# - name: Ensure that virtual machine is running
+#   vmadm: alias=template state=started
