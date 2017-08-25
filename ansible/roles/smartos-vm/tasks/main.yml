@@ -11,7 +11,7 @@
     - /tmp/base.json
 
 - name: Get UUID
-  command: "vmadm list alias=template |grep '[a-d0-9]-'|cut -d' ' -f1"
+  command: bash -c "vmadm list alias=template |grep '[a-d0-9]-'|cut -d' ' -f1"
   register: uuid_output
 
 - name:
