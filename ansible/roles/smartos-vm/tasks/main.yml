@@ -23,7 +23,7 @@
 
 - name: Copy the iso to the correct locaion
   get_url:
-    url: http://10.12.15.36:8000/iso/ubuntu.iso
+    url: http://10.12.15.36:8000/isos/ubuntu.iso
     dest: /zones/{{ template_uuid }}/root/
     mode: 0440
   
