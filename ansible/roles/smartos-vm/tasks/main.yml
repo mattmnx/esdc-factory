@@ -10,12 +10,16 @@
   with_items:
     - /tmp/base.json
 
+- name: Get UUID
+  command: "vmadm list alias=template |grep '[a-d0-9]-'|cut -d' ' -f1"
+  register: uuid_output
+
 - name:
   set_fact:
-    template_uuid: "vmadm list alias=elk.mnx.io |grep '[a-d0-9]-'|cut -d' ' -f1"
+    template_uuid: "{{ uuid_output.stdout }}"
 
 - debug:
-    msg: "{{template_uuid }}"
+    msg: "{{ template_uuid }}"
 
 - name: Copy the iso to the correct locaion
   get_url:
