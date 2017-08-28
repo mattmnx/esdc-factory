@@ -27,6 +27,8 @@
     dest: /zones/{{ template_uuid }}/root/
     mode: 0440
   
+- name: Boot the vm with the new iso
+  command: bash -c "vmadm boot {{template_uuid}} order=cd,once=d cdrom=/debian.iso,ide"
 
 # - name: Ensure that virtual machine is running
 #   vmadm: alias=template state=started
