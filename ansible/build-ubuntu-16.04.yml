@@ -7,8 +7,8 @@
 
 - name: Create VM
   hosts: buildnode
-  vars_files:
-    - vars/build/vm/ubuntu-16.04.yml
+  # vars_files:
+  #   - vars/build/vm/ubuntu-16.04.yml
   roles:
     - smartos-vm
     
