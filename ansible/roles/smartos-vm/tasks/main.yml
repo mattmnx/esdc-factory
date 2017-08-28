@@ -30,5 +30,10 @@
 - name: Boot the vm with the new iso
   command: bash -c "vmadm boot {{template_uuid}} order=cd,once=d cdrom=/ubuntu.iso,ide"
 
-# - name: Ensure that virtual machine is running
-#   vmadm: alias=template state=started
+# The iso is mounted and the base install should be done here.
+
+
+
+
+
+# The setup is done and now the OS Specific additions need to be added.
