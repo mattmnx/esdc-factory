@@ -3,7 +3,6 @@
   template: src=kvm.json.j2
             dest=/tmp/base.json
             validate="vmadm validate create kvm -f %s"
-  when: zone_brand == "kvm"
 
 - name: Create the virtual machine
   vmadm: manifest={{ item }} state=present
