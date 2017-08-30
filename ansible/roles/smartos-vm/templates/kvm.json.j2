@@ -19,13 +19,31 @@
     }
   ],
   "nics": [
+    #{
+    #  "nic_tag": "admin",
+    #  "model": "virtio",
+    #  "ip": "10.12.15.199",
+    #  "netmask": "255.255.254.0",
+    #  "gateway": "10.12.15.1",
+    #  "primary": 1
+    #}
     {
-      "nic_tag": "admin",
-      "model": "virtio",
-      "ip": "10.12.15.199",
+      "interface": "net0",
+      "vlan_id": 0,
+      "nic_tag": "external",
+      "gateway": "10.12.14.1",
       "netmask": "255.255.254.0",
-      "gateway": "10.12.15.1",
-      "primary": 1
+      "ip": "10.12.15.99",
+      "model": "virtio",
+      "primary": true
+    },
+    {
+      "interface": "net1",
+      "vlan_id": 0,
+      "nic_tag": "external",
+      "netmask": "255.255.0.0",
+      "ip": "172.16.10.99",
+      "model": "virtio"
     }
   ]
 }
