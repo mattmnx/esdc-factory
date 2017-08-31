@@ -5,8 +5,7 @@
 
 - name: reboot server
   shell: reboot
+  ignore_errors: yes
 
 - name: wait for server to come back online
-  local_actiopn: 
-    wait_for host: "{{ passtemplate }}"
-    state: started
+  local_action: wait_for state=started host={{ passtemplate }}
