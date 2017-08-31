@@ -11,10 +11,6 @@
   #   - vars/build/vm/ubuntu-16.04.yml
   roles:
     - smartos-vm
-    
-- name: Pause for build
-  pause:
-    prompt: "Press any key after initial setup is done"
 
 - name: Use password to install cloud-init and reboot
   hosts: passtemplate
