@@ -12,6 +12,25 @@
   roles:
     - smartos-vm
     
+- name: Pause for build
+  pause:
+    prompt: "Press any key after initial setup is done"
+
+- name: Use password to install cloud-init and reboot
+  hosts: passtemplate
+  roles:
+    - pass-build
+
+- name: Connect via key and finish build
+  hosts: keytemplate
+  roles:
+    - key-build
+
+
+
+
+
+
 # #Split this up into pre tasks, tasks, final tasks
 # - name: Create virtual machine and image
 #   hosts: buildnode

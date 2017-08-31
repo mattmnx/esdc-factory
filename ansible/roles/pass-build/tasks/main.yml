@@ -1,0 +1,12 @@
+- name: install cloud init
+  package:
+    name: cloud-init
+    state: latest
+
+- name: reboot server
+  shell: reboot
+
+- name: wait for server to come back online
+  local_actiopn: 
+    wait_for host: "{{ passtemplate }}"
+    state: started

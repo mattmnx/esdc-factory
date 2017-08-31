@@ -1,0 +1,65 @@
+- name: Prepare SSH
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "/etc/ssh/moduli"
+    - "/etc/ssh/ssh_host_*"
+    - "/root/.ssh/authorized_keys"
+    - "/root/.lesshst"
+
+- name: update package manager for redhat based
+  command: "yum update -y"
+  when:
+    ansible_os_family: "RedHat"
+
+- name: update package manager for debian based
+  command: "apt-get update -y"
+  when:
+    ansible_os_family: "Debian"
+
+# Ensure latest kernel is loaded at boot
+- name: Run GRUB load script
+  script: grubmenu.sh
+
+- name: clean yum
+  command: "yum clean all"
+  when:
+    ansible_os_family: "RedHat"
+
+- name: clean apt
+  command: "apt-get clean"
+  when:
+    ansible_os_family: "Debian"
+
+- name: Clear temp dirs
+  file:
+    path: "/tmp/*"
+    state: absent
+
+- name: Clear wtmp and btmp
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    -  "/var/log/wtmp"
+    -  "/var/log/btmp"
+
+- name: Touch wtmp and btmp
+  file:
+    path: "{{ item }}"
+    state: touch
+  with_items:
+    -  "/var/log/wtmp"
+    -  "/var/log/btmp"
+
+- name: Remove bash history
+  file:
+    path: "/root/.bash_history"
+    state: absent
+
+- name: Clear history
+  command: "history -c"
+
+- name: Remove any previous cloud-init data
+  file: "/var/lib/cloud/instances/*"
