@@ -15,11 +15,11 @@
 #  roles:
 #    - pass-build
 
-- name: Connect via key and finish build
-  hosts: keytemplate 
-  roles:
-    - key-build
-  become: yes
+#- name: Connect via key and finish build
+#  hosts: keytemplate 
+#  roles:
+#    - key-build
+#  become: yes
 
 - name: Create Image
   hosts: buildnode
