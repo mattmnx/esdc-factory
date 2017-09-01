@@ -29,8 +29,8 @@
            homepage="http://mnx.io"
 
 - name: Rename image file
-  file: src="/opt/{{ zone_uuid }}/{{ image_name }}-{{ image_version }}.zvol.gz"
-        path="/opt/{{ zone_uuid }}/{{ image_name }}-{{ image_version }}.zfs.gz"
+  file: src="/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.zvol.gz"
+        path="/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.zfs.gz"
         state=hard
  
 - name: Download image 
