@@ -21,7 +21,10 @@
     - key-build
   become: yes
 
-
+- name: Create Image
+  hosts: buildnode
+  roles:
+    - create-image
 
 
 
