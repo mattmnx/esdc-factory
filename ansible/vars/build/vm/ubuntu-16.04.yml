@@ -1,11 +1,12 @@
 # Dependencies: base.yml, zone.yml
-image_name: ubuntu-16.04
+image_name: "ubuntu"
+image_version: "16.04"
 image_desc: "Ubuntu 16.04 Base Image with Cloud Config"
 image_homepage: "{{ image_contrib_homepage }}/ubuntu-16.04.rst"
 image_requirements:
   min_ram: 798
 remove_base_image: true
-builder_dir: "{{ builder.appliance.dir }}/ubuntu-16.04"
+builder_dir: "/root/data/ubuntu-16.04"
 zone_brand: kvm
 zone_vnc_port: "65081"
 zone_uuid: 632a5889-eb72-4b8e-8241-1e61946aaaaa
@@ -17,4 +18,3 @@ zone_disks:
     image_uuid: "{{ base_centos_imgmanifest.uuid }}"
     refreservation: "{{ base_centos_imgmanifest.image_size }}"
 zone_nic_0_ip: "10.12.15.199"
-base_image_url: ubuntu-16.04.3-server-amd64.img

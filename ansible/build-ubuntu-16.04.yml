@@ -25,7 +25,8 @@
   hosts: buildnode
   roles:
     - create-image
-
+  vars_files:
+    - vars/build/vm/ubuntu-16.04.yml
 
 
 # #Split this up into pre tasks, tasks, final tasks
