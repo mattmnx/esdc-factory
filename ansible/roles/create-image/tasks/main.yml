@@ -1,5 +1,3 @@
-- name: Create image file 
-
 - name: Get UUID
   command: bash -c "vmadm list alias=template |grep '[a-d0-9]-'|cut -d' ' -f1"
   register: uuid_output
@@ -18,14 +16,13 @@
   command: chdir="/opt/{{ template_uuid }}" imgadm create -c gzip "{{ template_uuid }}"
            name='Ububntu'
            version='16.04'
-           tags=''
            published_at="{{ lookup('pipe', 'date -u +\"%Y-%m-%dT%H:%M:%SZ\"') }}"
            os=linux
            type=zvol
            nic_driver=virtio
            disk_driver=virtio
            cpu_type=qemu64
-           image_size="10G"
+           image_size="10000"
            state="active"
            disabled="false"
            description="Base Ubuntu Image"
