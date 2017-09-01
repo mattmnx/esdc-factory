@@ -1,1 +1,0 @@
-ludolph.sh

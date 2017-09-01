@@ -28,3 +28,12 @@
            description="Base Ubuntu Image"
            homepage="http://mnx.io"
  
+- name: Download image artefacts
+  fetch: src="{{ item }}"
+         dest="{{ builder_dir }}/"
+         flat=yes
+         fail_on_missing=yes
+         validate_checksum=yes
+  with_items:
+    - "/opt/{{ template_uuid }}.zfs.gz"
+    - "/opt/{{ template_uuid }}.imgmanifest"
