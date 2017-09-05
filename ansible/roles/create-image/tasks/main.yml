@@ -42,13 +42,13 @@
   with_items:
     - "/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.zfs.gz"
     - "/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.imgmanifest"
-    - "/tmp/{{ template_uuid }}.json"
+    - "/tmp/base.json"
 
 - name: Remove file leftovers
   file: path="{{ item }}" state=absent
   with_items:
     - "/opt/{{ template_uuid }}"
-    - "/tmp/{{ template_uuid }}.json"
+    - "/tmp/base.json"
 
 - name: Get virtual machine configuration
   shell: vmadm get "{{ template_uuid }}"

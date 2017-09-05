@@ -1,25 +1,24 @@
-#- name: Check builder host
-#  hosts: builder
-#  tasks:
-#    - include: tasks/build/check.yml
-#      when: skip_check is not defined or not skip_check
+- name: Check builder host
+  hosts: builder
+  tasks:
+    - include: tasks/build/check.yml
+      when: skip_check is not defined or not skip_check
 
+- name: Create VM
+  hosts: buildnode
+  roles:
+    - smartos-vm
 
-#- name: Create VM
-#  hosts: buildnode
-#  roles:
-#    - smartos-vm
+- name: Use password to install cloud-init and reboot
+  hosts: passtemplate
+  roles:
+    - pass-build
 
-#- name: Use password to install cloud-init and reboot
-#  hosts: passtemplate
-#  roles:
-#    - pass-build
-
-#- name: Connect via key and finish build
-#  hosts: keytemplate 
-#  roles:
-#    - key-build
-#  become: yes
+- name: Connect via key and finish build
+  hosts: keytemplate 
+  roles:
+    - key-build
+  become: yes
 
 - name: Create Image
   hosts: buildnode
