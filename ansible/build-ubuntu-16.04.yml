@@ -1,8 +1,8 @@
-- name: Check builder host
-  hosts: builder
-  tasks:
-    - include: tasks/build/check.yml
-      when: skip_check is not defined or not skip_check
+#- name: Check builder host
+#  hosts: builder
+#  tasks:
+#    - include: tasks/build/check.yml
+#      when: skip_check is not defined or not skip_check
 
 
 #- name: Create VM
