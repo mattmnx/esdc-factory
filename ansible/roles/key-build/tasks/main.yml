@@ -1,4 +1,5 @@
 
+
 - name: update package manager for redhat based
   command: "yum update -y"
   when: ansible_os_family == "RedHat"
@@ -60,4 +61,12 @@
     state: absent
     remove: yes
 
-# Need to remove 
+- name: Prepare SSH
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "/etc/ssh/moduli"
+    - "/etc/ssh/ssh_host_*"
+    - "/root/.ssh/authorized_keys"
+    - "/root/.lesshst"
