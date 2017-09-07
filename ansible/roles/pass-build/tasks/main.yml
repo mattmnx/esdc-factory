@@ -7,5 +7,12 @@
   shell: reboot
   ignore_errors: yes
 
-- name: wait for server to come back online
-  local_action: wait_for state=started host={{ passtemplate }}
+- name: wait for reboot
+  pause:
+    minutes: 2
+
+- name: Ensure port is open on server
+  wait_for:
+    host: "{{ buildnode }}"
+    port: 22
+  delegate_to: "{{ builder }}"
