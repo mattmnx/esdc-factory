@@ -4,12 +4,13 @@
     state: latest
 
 - name: reboot server
-  shell: reboot
+  shell: shutdown -r -t 10
   ignore_errors: yes
 
 - name: wait for reboot
   pause:
     minutes: 2
+  
 
 - name: Ensure port is open on server
   wait_for:

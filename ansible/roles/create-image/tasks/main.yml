@@ -54,8 +54,8 @@
   shell: vmadm get "{{ template_uuid }}"
   register: vm_manifest
 
-- name: Remove virtual machine
-  vmadm: name="{{ template_uuid }}" state=absent
+#- name: Remove virtual machine
+#  vmadm: name="{{ template_uuid }}" state=absent
 
 - name: Create symlink to the latest version
   file: src="{{ builder_dir }}/{{ item.src }}"
@@ -75,7 +75,9 @@
       image_manifest="{{ builder_dir }}/{{ image_name }}-{{ image_version }}.imgmanifest"
   delegate_to: builder
 
-- name: Re-create IMGAPI root manifest in {{ builder.image.dir }}/manifest
-  include: tasks/build/imgapi/root.yml
-      imgapi_dir="{{ builder.image.dir }}"
+#- name: Re-create IMGAPI root manifest in {{ builder.image.dir }}/manifest
+#  include: tasks/build/imgapi/root.yml
+#      imgapi_dir="{{ builder.image.dir }}"
+- name: Create IMGAPI Root Manifest
+  command: IMGAPI_Manifest.py
   delegate_to: builder

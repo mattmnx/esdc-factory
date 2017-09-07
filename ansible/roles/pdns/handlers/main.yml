@@ -1,3 +1,0 @@
----
-- name: restart pdns
-  service: name={{ pdns_service }} state=restarted
