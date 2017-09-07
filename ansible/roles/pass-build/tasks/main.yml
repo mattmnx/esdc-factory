@@ -4,16 +4,18 @@
     state: latest
 
 - name: reboot server
-  shell: shutdown -r -t 10
+  command: /sbin/reboot
+  async: 0
+  poll: 0
   ignore_errors: yes
 
 - name: wait for reboot
   pause:
-    minutes: 2
+    minutes: 1
   
-
 - name: Ensure port is open on server
   wait_for:
     host: "{{ buildnode }}"
     port: 22
+    state: started
   delegate_to: "{{ builder }}"

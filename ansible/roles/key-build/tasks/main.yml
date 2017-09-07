@@ -62,3 +62,9 @@
   file: 
     path: "/var/lib/cloud/instances/*"
     state: absent
+
+- name: Delete Template user 
+  user:
+    name: template
+    state: absent
+    remove: yes
