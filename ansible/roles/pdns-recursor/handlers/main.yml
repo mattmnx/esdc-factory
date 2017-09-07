@@ -1,3 +1,0 @@
----
-- name: restart pdns-recursor
-  service: name={{ recursor_service }} state=restarted

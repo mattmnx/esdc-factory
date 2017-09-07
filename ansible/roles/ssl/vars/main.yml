@@ -1,3 +1,0 @@
----
-ssl_key: "/etc/pki/tls/private/localhost.key"
-ssl_cert: "/etc/pki/tls/certs/localhost.crt"

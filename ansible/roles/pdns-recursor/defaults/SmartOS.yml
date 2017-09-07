@@ -1,5 +1,0 @@
-recursor_config_dir: /opt/local/etc
-recursor_service: pdns-recursor
-
-recursor_packages:
-    - pdns-recursor

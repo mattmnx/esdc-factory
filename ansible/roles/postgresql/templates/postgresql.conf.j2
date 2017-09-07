@@ -1,7 +1,0 @@
-#
-# postgresql.conf overrides
-#
-
-{% for key,val in pg_cfg_postgresql_conf.items() %}
-{{ key }} = {{ val }}
-{% endfor %}
