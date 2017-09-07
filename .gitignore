@@ -14,7 +14,3 @@
 *.swp
 *.test
 
-# Configuration files
-etc/config.yml
-etc/hosts.cfg
-etc/files

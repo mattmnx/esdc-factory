@@ -14,7 +14,7 @@
 
 - name: Create image {{ image_name }}
   command: chdir="/opt/{{ template_uuid }}" imgadm create -c gzip "{{ template_uuid }}"
-           name="{{ image_name }}""
+           name="{{ image_name }}"
            version="{{ image_version }}"
            published_at="{{ lookup('pipe', 'date -u +\"%Y-%m-%dT%H:%M:%SZ\"') }}"
            os=linux
@@ -29,7 +29,7 @@
            homepage="http://mnx.io"
 
 - name: Send image to image server
-  shell: url -v -u admintoken: http://10.12.15.36:5000/api/upload -F manifest=@/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.imgmanifest -Ffile=@/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.zvol.gz
+  command: "curl -v -u admintoken: http://10.12.15.36:5000/api/upload -F manifest=@/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.imgmanifest -Ffile=@/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.zvol.gz"
 
 # - name: Rename image file
 #   file: src="/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.zvol.gz"

@@ -1,0 +1,34 @@
+# builder IP & HTTP server port serving
+# the content of 'build_base_dir'
+build_base_url: 'http://10.12.15.36:8000'
+# htdocs dir path on builder
+build_base_dir: '/root/data'
+#build_uuid_generator: 'uuidgen'
+# this key will be temporarily pushed into created VMs,
+# so ansible can log in an configure them
+build_ssh_key: 'ssh-rsa root root@host'
+# root pwd that will be set in VMs
+build_image_password: 'nbusr123'
+build_disk_compression: lz4
+
+build_resolvers:
+  - 8.8.8.8
+  - 8.8.4.4
+
+# nic tag of the interface on buildhost which will be used by VMs to access the network
+build_nic_tag: admin
+# network config of VMs
+build_gateway: 192.168.23.1
+build_netmask: 255.255.255.0
+
+# the actual IP of the created VM (or VMs)
+build_ips:
+# Or specify only one, which will be used by all VMs (=> no parallel builds).
+# When using this, "build_ips" must be defined as empty list.
+build_ip: 10.12.15.199
+
+# if you have multiple VMs, you have to use diferrent VNC ports
+build_vnc_ports:
+# Or specify only one, which will be used by all VMs (=> no parallel builds)
+# When using this, "build_vnc_ports" must be defined as empty list.
+build_vnc_port: 65081
