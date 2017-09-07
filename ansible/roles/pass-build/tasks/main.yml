@@ -16,18 +16,17 @@
     mode: a+x
 
 - name: reboot server
- command: /sbin/reboot
- async: 0
- poll: 0
- ignore_errors: yes
-
-- name: wait for reboot
-  pause:
-    minutes: 1
+  shell: sleep 2 && /sbin/shutdown -r now
+  async: 1
+  poll: 0
+  ignore_errors: yes
   
 - name: Ensure port is open on server
-  wait_for:
+  local_action: wait_for
+  args:
     host: "{{ buildnode }}"
     port: 22
     state: started
+    delay: 30
+    timeout: 300
   delegate_to: "{{ builder }}"
