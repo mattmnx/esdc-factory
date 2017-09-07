@@ -68,5 +68,5 @@
   with_items:
     - "/etc/ssh/moduli"
     - "/etc/ssh/ssh_host_*"
-    - "/root/.ssh/authorized_keys"
     - "/root/.lesshst"
+    - "/root/.ssh/authorized_keys"

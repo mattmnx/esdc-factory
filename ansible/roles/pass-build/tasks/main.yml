@@ -4,10 +4,16 @@
     state: latest
 
 - name: copy over base cloud init config
- copy:
-   src: cloud.cfg
-   dest: /etc/cloud/cloud.cfg
-   mode: 0644
+  copy:
+    src: cloud.cfg
+    dest: /etc/cloud/cloud.cfg
+    mode: 0644
+
+- name: copy the lvextend script
+  copy:
+    src: scripts/expandlvs.sh
+    dest: /var/lib/cloud/scripts/per-boot/expandlvs.sh
+    mode: a+x
 
 - name: reboot server
  command: /sbin/reboot
