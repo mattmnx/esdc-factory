@@ -3,17 +3,17 @@
     name: cloud-init
     state: latest
 
-- name: copy over base cloud init config
-  copy:
-    src: cloud.cfg
-    dest: /etc/cloud/cloud.cfg
-    mode: 0644
+#- name: copy over base cloud init config
+#  copy:
+#    src: cloud.cfg
+#    dest: /etc/cloud/cloud.cfg
+#    mode: 0644
 
-- name: reboot server
-  command: /sbin/reboot
-  async: 0
-  poll: 0
-  ignore_errors: yes
+#- name: reboot server
+#  command: /sbin/reboot
+#  async: 0
+#  poll: 0
+#  ignore_errors: yes
 
 - name: wait for reboot
   pause:
