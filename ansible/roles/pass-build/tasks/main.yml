@@ -20,13 +20,17 @@
   async: 1
   poll: 0
   ignore_errors: yes
+
+- name: wait for server to reboot
+  pause:
+    minutes: 1
   
-- name: Ensure port is open on server
-  local_action: wait_for
-  args:
-    host: "{{ buildnode }}"
-    port: 22
-    state: started
-    delay: 30
-    timeout: 300
-  delegate_to: "{{ builder }}"
+# - name: Ensure port is open on server
+#   local_action: wait_for
+#   args:
+#     host: "{{ buildnode }}"
+#     port: 22
+#     state: started
+#     delay: 30
+#     timeout: 300
+#   delegate_to: "{{ builder }}"
