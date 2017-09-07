@@ -9,11 +9,11 @@
     dest: /etc/cloud/cloud.cfg
     mode: 0644
 
-- name: copy the lvextend script
-  copy:
-    src: scripts/expandlvs.sh
-    dest: /var/lib/cloud/scripts/per-boot/expandlvs.sh
-    mode: a+x
+#- name: copy the lvextend script
+#  copy:
+#    src: scripts/expandlvs.sh
+#    dest: /var/lib/cloud/scripts/per-boot/expandlvs.sh
+#    mode: a+x
 
 - name: reboot server
   shell: sleep 2 && /sbin/shutdown -r now
