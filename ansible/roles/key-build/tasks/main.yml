@@ -1,12 +1,3 @@
-- name: Prepare SSH
-  file:
-    path: "{{ item }}"
-    state: absent
-  with_items:
-    - "/etc/ssh/moduli"
-    - "/etc/ssh/ssh_host_*"
-    - "/root/.ssh/authorized_keys"
-    - "/root/.lesshst"
 
 - name: update package manager for redhat based
   command: "yum update -y"
@@ -68,3 +59,5 @@
     name: template
     state: absent
     remove: yes
+
+# Need to remove 
