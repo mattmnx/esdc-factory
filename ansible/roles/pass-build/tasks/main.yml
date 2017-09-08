@@ -9,11 +9,10 @@
     dest: /etc/cloud/cloud.cfg
     mode: 0644
 
-#- name: copy the lvextend script
-#  copy:
-#    src: scripts/expandlvs.sh
-#    dest: /var/lib/cloud/scripts/per-boot/expandlvs.sh
-#    mode: a+x
+- name: Install mdata
+  package:
+    name: joyent-mdata-client
+    state: latest
 
 - name: reboot server
   shell: sleep 2 && /sbin/shutdown -r now
@@ -25,12 +24,3 @@
   pause:
     minutes: 1
   
-# - name: Ensure port is open on server
-#   local_action: wait_for
-#   args:
-#     host: "{{ buildnode }}"
-#     port: 22
-#     state: started
-#     delay: 30
-#     timeout: 300
-#   delegate_to: "{{ builder }}"
