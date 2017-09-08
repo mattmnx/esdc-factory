@@ -31,56 +31,11 @@
 - name: Send image to image server
   command: "curl -v -u admintoken: http://10.12.15.36:5000/api/upload -F manifest=@/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.imgmanifest -Ffile=@/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.zvol.gz"
 
-# - name: Rename image file
-#   file: src="/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.zvol.gz"
-#         path="/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.zfs.gz"
-#         state=hard
- 
-# - name: Download image 
-#   fetch: src="{{ item }}"
-#          dest="{{ builder_dir }}/"
-#          flat=yes
-#          fail_on_missing=yes
-#          validate_checksum=yes
-#   with_items:
-#     - "/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.zfs.gz"
-#     - "/opt/{{ template_uuid }}/{{ image_name }}-{{ image_version }}.imgmanifest"
-#     - "/tmp/base.json"
+- name: ask to delete temp
+  pause:
+    prompt: Press enter to delete the template vm, or Ctrl-A to abort
 
-# - name: Remove file leftovers
-#   file: path="{{ item }}" state=absent
-#   with_items:
-#     - "/opt/{{ template_uuid }}"
-#     - "/tmp/base.json"
-
-# - name: Get virtual machine configuration
-#   shell: vmadm get "{{ template_uuid }}"
-#   register: vm_manifest
-
-# #- name: Remove virtual machine
-# #  vmadm: name="{{ template_uuid }}" state=absent
-
-# - name: Create symlink to the latest version
-#   file: src="{{ builder_dir }}/{{ item.src }}"
-#         dest="{{ builder_dir }}/{{ item.dest }}"
-#         state=link
-#   with_items:
-#     - src: "{{ image_name }}-{{ image_version }}.zfs.gz"
-#       dest: "{{ image_name }}-latest.zfs.gz"
-#     - src: "{{ image_name }}-{{ image_version }}.imgmanifest"
-#       dest: "{{ image_name }}-latest.imgmanifest"
-#   delegate_to: builder
-
-# - name: Create IMGAPI item
-#   include: tasks/build/imgapi/item.yml
-#       images_dir="{{ builder.image.dir }}"
-#       image_file_ext='.zfs.gz'
-#       image_manifest="{{ builder_dir }}/{{ image_name }}-{{ image_version }}.imgmanifest"
-#   delegate_to: builder
-
-# #- name: Re-create IMGAPI root manifest in {{ builder.image.dir }}/manifest
-# #  include: tasks/build/imgapi/root.yml
-# #      imgapi_dir="{{ builder.image.dir }}"
-# - name: Create IMGAPI Root Manifest
-#   command: IMGAPI_Manifest.py
-#   delegate_to: builder
+- name: Remove virtual machine
+  vmadm: 
+    name: "{{ template_uuid }}" 
+    state: absent
