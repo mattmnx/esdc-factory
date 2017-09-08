@@ -3,7 +3,7 @@ sectorend=$(fdisk /dev/vda -l |grep "Disk /dev/vda" | cut -d" " -f 7)
 current=$(fdisk /dev/vda -l |tail -1 |cut -d" " -f 9)
 difference=`expr $sectorend - $current`
 if [ $difference -ne 1 ]; then
-    echo -e "n\ne\n\n\n\nw\nq\n" | fdisk /dev/vda
+    echo -e "n\np\n\n\n\nw\nq\n" | fdisk /dev/vda
     partprobe
 fi
 IFS=$'\n'

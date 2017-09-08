@@ -70,7 +70,7 @@
 - name: copy the setrootpw script
   copy:
     src: scripts/setrootpw.sh
-    dest: /var/lib/cloud/scripts/per-boot/setrootpw.sh
+    dest: /var/lib/cloud/scripts/per-once/setrootpw.sh
     mode: a+x
 
 - name: Prepare SSH
