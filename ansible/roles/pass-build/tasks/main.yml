@@ -1,3 +1,11 @@
+- name: delete local known host entry
+  lineinfile:
+    path: ~/.ssh/known_hosts
+    regexp: '^10.12.15.199'
+    state: absent
+  delegate_to: builder
+
+
 - name: install cloud init
   package:
     name: cloud-init
