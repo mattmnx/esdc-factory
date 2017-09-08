@@ -67,11 +67,11 @@
     dest: /var/lib/cloud/scripts/per-boot/expandlvs.sh
     mode: a+x
 
-# - name: copy the setrootpw script
-#   copy:
-#     src: scripts/setrootpw.sh
-#     dest: /var/lib/cloud/scripts/per-once/setrootpw.sh
-#     mode: a+x
+- name: copy the setrootpw script
+  copy:
+    src: scripts/setrootpw.sh
+    dest: /var/lib/cloud/scripts/per-boot/setrootpw.sh
+    mode: a+x
 
 - name: Prepare SSH
   file:
@@ -82,6 +82,12 @@
     - "/etc/ssh/ssh_host_*"
     - "/root/.lesshst"
 
+- name: blank root password
+  lineinfile:
+    path: /etc/shadow
+    regexp: '^root:[^:]*'
+    line: 'root:*'
+    
 - name: Delete authorized keys file
   shell: sleep 2 && rm -f /root/.ssh/authorized_keys
   async: 1
