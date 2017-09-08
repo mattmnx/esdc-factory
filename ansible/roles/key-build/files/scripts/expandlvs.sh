@@ -11,5 +11,5 @@ for partition in `fdisk /dev/vda -l |grep "Linux$"`; do
         addtolv=$(echo $partition | cut -d" " -f1)
         pvcreate $addtolv
         vgextend rootvg $addtolv
-        lvresize --resizefs -l +100%FREE /dev/mapper/rootvg-rootvg
+        lvresize --resizefs -l +100%FREE /dev/mapper/rootvg-rootlv
 done
