@@ -33,7 +33,12 @@
   pause:
     prompt: Press any key when build is done to continue
 
-
+- name: delete local known host entry
+  lineinfile:
+    path: ~/.ssh/known_hosts
+    regexp: '^10.12.15.199'
+    state: absent
+  delegate_to: builder
 
 
 # The setup is done and now the OS Specific additions need to be added.
