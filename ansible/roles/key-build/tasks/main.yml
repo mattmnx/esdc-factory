@@ -81,15 +81,9 @@
     - "/etc/ssh/moduli"
     - "/etc/ssh/ssh_host_*"
     - "/root/.lesshst"
-
-- name: blank root password
-  lineinfile:
-    path: /etc/shadow
-    regexp: '^root:[^:]*'
-    line: 'root:*'
     
-- name: Delete authorized keys file
-  shell: sleep 2 && rm -f /root/.ssh/authorized_keys
+- name: Delete authorized keys file and blank root password
+  shell: sleep 2 && rm -f /root/.ssh/authorized_keys && passwd -dl root
   async: 1
   poll: 0
   ignore_errors: yes
