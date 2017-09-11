@@ -1,0 +1,19 @@
+# Dependencies: base.yml, zone.yml
+image_name: "debian"
+image_version: "9"
+image_desc: "Debian 9 Base Image with Cloud Config"
+image_homepage: "{{ image_contrib_homepage }}/debian-9.rst"
+image_requirements:
+  min_ram: 798
+remove_base_image: true
+builder_dir: "/root/data/debian-9"
+zone_brand: kvm
+zone_vnc_port: "65081"
+zone_hostname: "{{ image_name }}"
+zone_disks:
+  - boot: true
+    compression: "{{ build_disk_compression | default('lz4') }}"
+    image_size: "{{ base_centos_imgmanifest.image_size }}"
+    image_uuid: "{{ base_centos_imgmanifest.uuid }}"
+    refreservation: "{{ base_centos_imgmanifest.image_size }}"
+zone_nic_0_ip: "10.12.15.199"

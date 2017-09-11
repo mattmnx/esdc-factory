@@ -1,0 +1,29 @@
+- name: Check builder host
+  hosts: builder
+  tasks:
+    - include: tasks/build/check.yml
+      when: skip_check is not defined or not skip_check
+
+- name: Create VM
+  hosts: buildnode
+  roles:
+    - smartos-vm
+  vars_files:
+    - vars/build/os/debian-9.yml
+
+- name: Use password to install cloud-init and reboot
+  hosts: passtemplate
+  roles:
+    - pass-build
+
+- name: Connect via key and finish build
+  hosts: keytemplate 
+  roles:
+    - key-build
+
+- name: Create Image
+  hosts: buildnode
+  roles:
+    - create-image
+  vars_files:
+    - vars/build/vm/debian-9.yml
