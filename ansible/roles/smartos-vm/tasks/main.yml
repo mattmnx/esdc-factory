@@ -27,7 +27,7 @@
     mode: 0440
   
 - name: Boot the vm with the new iso
-  command: bash -c "vmadm boot {{template_uuid}} order=cd,once=d cdrom=/{{ iso_file }}.iso,ide"
+  command: bash -c "vmadm boot {{template_uuid}} order=cd,once=d cdrom=/{{ iso_file }},ide"
 
 - name: Pause for the build to be done
   pause:
