@@ -51,10 +51,7 @@
   command: bash -c 'history -c'
 
 - name: Remove any previous cloud-init data
-  file: 
-    path: "/var/lib/cloud/instances/"
-    state: absent
-    recursive: yes
+  command: rm -rf /var/lib/cloud/instances/*
 
 - name: Delete Template user 
   user:
