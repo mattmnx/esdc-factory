@@ -74,6 +74,12 @@
     dest: /var/lib/cloud/scripts/per-boot/setrootpw.sh
     mode: a+x
 
+- name: copy the setupdns script
+  copy:
+    src: scripts/setupdns.sh
+    dest: /var/lib/cloud/scripts/per-boot/setupdns.sh
+    mode: a+x
+
 - name: Prepare SSH
   file:
     path: "{{ item }}"
