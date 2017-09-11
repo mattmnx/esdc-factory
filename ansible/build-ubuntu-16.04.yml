@@ -8,6 +8,8 @@
   hosts: buildnode
   roles:
     - smartos-vm
+  vars_files:
+    - vars/build/os/ubuntu-16.04.yml
 
 - name: Use password to install cloud-init and reboot
   hosts: passtemplate
@@ -18,7 +20,6 @@
   hosts: keytemplate 
   roles:
     - key-build
-#  become: yes
 
 - name: Create Image
   hosts: buildnode
@@ -26,16 +27,3 @@
     - create-image
   vars_files:
     - vars/build/vm/ubuntu-16.04.yml
-
-
-# #Split this up into pre tasks, tasks, final tasks
-# - name: Create virtual machine and image
-#   hosts: buildnode
-#   vars_files:
-#     - vars/build/vm/ubuntu-16.04.yml
-#   pre_tasks:
-#     - include: tasks/build/cleanup.yml
-#   roles:
-#     - smartos-vm
-#   tasks:
-#     - include: tasks/build/ubuntu-16.04/create-image.yml

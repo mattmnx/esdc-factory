@@ -52,8 +52,9 @@
 
 - name: Remove any previous cloud-init data
   file: 
-    path: "/var/lib/cloud/instances/*"
+    path: "/var/lib/cloud/instances/"
     state: absent
+    recursive: yes
 
 - name: Delete Template user 
   user:
