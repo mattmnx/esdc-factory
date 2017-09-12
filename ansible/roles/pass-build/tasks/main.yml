@@ -21,9 +21,6 @@
 - name: Install mdata using script
   script: mdatainstall.sh
 
-- name: Add authorized key to root
-  command: mdata-get root_authorized_keys >> /root/.ssh/authorized_keys
-
 - name: Remove any non-used distros in cloud init 
   lineinfile:
     path: /etc/cloud/cloud.cfg.d/90_dpkg.cfg
@@ -41,3 +38,5 @@
   pause:
     minutes: 1
   
+- name: Add authorized key to root
+  command: mdata-get root_authorized_keys >> /root/.ssh/authorized_keys
