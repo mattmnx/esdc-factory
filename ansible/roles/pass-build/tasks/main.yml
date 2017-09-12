@@ -16,6 +16,7 @@
   with_items:
     - make
     - git
+    - gcc
 
 - name: Install mdata using script
   script: mdatainstall.sh
