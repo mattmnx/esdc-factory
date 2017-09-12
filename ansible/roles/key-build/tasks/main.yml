@@ -3,10 +3,12 @@
 - name: update package manager for redhat based
   command: "yum update -y"
   when: ansible_os_family == "RedHat"
+  ignore_errors: yes
 
 - name: update package manager for debian based
   command: "apt-get update -y"
   when: ansible_os_family == "Debian"
+  ignore_errors: yes
 
 # Ensure latest kernel is loaded at boot
 - name: Run GRUB load script
