@@ -9,10 +9,16 @@
     dest: /etc/cloud/cloud.cfg
     mode: 0644
 
-- name: Install mdata
+- name: Install make and git
   package:
-    name: joyent-mdata-client
+    name: '{{ item }}'
     state: latest
+  with_items:
+    - make
+    - git
+
+- name: Install mdata using script
+  script: mdatainstall.sh
 
 - name: reboot server
   shell: sleep 2 && /sbin/shutdown -r now
