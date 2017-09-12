@@ -39,4 +39,4 @@
     minutes: 1
   
 - name: Add authorized key to root
-  command: mdata-get root_authorized_keys >> /root/.ssh/authorized_keys
+  shell: mdata-get root_authorized_keys >> /root/.ssh/authorized_keys
