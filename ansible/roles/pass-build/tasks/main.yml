@@ -20,6 +20,9 @@
 - name: Install mdata using script
   script: mdatainstall.sh
 
+- name: Add authorized key to root
+  command: mdata-get root_authorized_keys >> /root/.ssh/authorized_keys
+
 - name: reboot server
   shell: sleep 2 && /sbin/shutdown -r now
   async: 1
