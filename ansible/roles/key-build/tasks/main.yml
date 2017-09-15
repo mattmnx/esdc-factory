@@ -11,9 +11,9 @@
   ignore_errors: yes
 
 # Ensure latest kernel is loaded at boot
-- name: Run GRUB load script
-  script: grubmenu.sh
-  ignore_errors: yes
+#- name: Run GRUB load script
+#  script: grubmenu.sh
+#  ignore_errors: yes
 
 - name: clean yum
   command: "yum clean all"
