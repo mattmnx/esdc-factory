@@ -6,7 +6,10 @@
   ignore_errors: yes
 
 - name: update package manager for debian based
-  command: "apt-get update -y"
+  apt:
+    name: "*"
+    state: latest
+    update_cache: yes
   when: ansible_os_family == "Debian"
   ignore_errors: yes
 
@@ -91,6 +94,11 @@
   with_items:
     - "/etc/ssh/moduli"
     - "/root/.lesshst"
+    - "/root/.viminfo"
+    - "/root/.cache"
+
+- name: Delete ansible temp dirs
+  shell: rm -rf /root/.ansible*
     
 - name: Delete authorized keys file and blank root password
   shell: sleep 2 && rm -f /root/.ssh/authorized_keys && passwd -dl root
