@@ -79,13 +79,15 @@
     dest: /var/lib/cloud/scripts/per-boot/setupdns.sh
     mode: a+x
 
+- name: Remove ssh items
+  shell: rm -rf /etc/ssh/ssh_host_*
+
 - name: Prepare SSH
   file:
     path: "{{ item }}"
     state: absent
   with_items:
     - "/etc/ssh/moduli"
-    - "/etc/ssh/ssh_host_*"
     - "/root/.lesshst"
     
 - name: Delete authorized keys file and blank root password
