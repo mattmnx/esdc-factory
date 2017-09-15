@@ -61,6 +61,8 @@
     state: absent
     remove: yes
 
+#May need different scripts for varios OSes, Need to pull from VAR here
+
 - name: copy the lvextend script
   copy:
     src: scripts/expandlvs.sh

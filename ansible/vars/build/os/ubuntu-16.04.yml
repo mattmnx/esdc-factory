@@ -1,1 +1,2 @@
-iso_file: "ubuntu.iso"
+iso_file: "ubuntu-16.04.iso"
+distro_cloud_cfg: "ubuntu"

@@ -5,7 +5,7 @@
 
 - name: copy over base cloud init config
   copy:
-    src: cloud.cfg
+    src: "{{ distro_cloud_cfg }}/cloud.cfg"
     dest: /etc/cloud/cloud.cfg
     mode: 0644
 
